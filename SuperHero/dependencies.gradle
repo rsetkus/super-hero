@@ -1,0 +1,26 @@
+ext {
+    kotlinVersion = "1.2.60"
+    klintVersion = "0.26.0"
+    supportVersion = "27.1.1"
+    constraintLayoutVersion = "1.1.1"
+
+    junitVersion = "4.12"
+    kotlinJunitTestVersion = "1.0.6"
+    testRunnerVersion = "1.0.2"
+    espressoVersion = "3.0.2"
+
+    appDependencies = [
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            ktlint              : "com.github.shyiko:ktlint:$klintVersion",
+            appCompat           : "com.android.support:appcompat-v7:$supportVersion",
+            constraintLayout    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    ]
+
+    appTestDependencies = [
+            junit               : "junit:junit:$junitVersion",
+            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            kotlinJunitTest     : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
+            androidTestRunner   : "com.android.support.test:runner:$testRunnerVersion",
+            espressoCore        : "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    ]
+}
