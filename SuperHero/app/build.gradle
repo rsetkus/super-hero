@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 repositories {
     mavenCentral()
@@ -40,6 +41,10 @@ dependencies {
     ktlint appDependencies.ktlint
 
     implementation appDependencies.kotlinStdLib
+
+    implementation appDependencies.dagger2
+    kapt appDependencies.dagger2Compiler
+    compileOnly appDependencies.javaxAnnotation
 
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
