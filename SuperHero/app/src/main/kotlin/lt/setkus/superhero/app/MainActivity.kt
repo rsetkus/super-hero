@@ -1,4 +1,4 @@
-package lt.setkus.superhero
+package lt.setkus.superhero.app
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

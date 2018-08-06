@@ -1,4 +1,4 @@
-package lt.setkus.superhero.di.module
+package lt.setkus.superhero.app.di.module
 
 import dagger.Module
 
