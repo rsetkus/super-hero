@@ -46,6 +46,9 @@ dependencies {
     kapt appDependencies.dagger2Compiler
     compileOnly appDependencies.javaxAnnotation
 
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitGson
+
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
 
