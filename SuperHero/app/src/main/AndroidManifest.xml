@@ -2,6 +2,8 @@
 <manifest package="superhero.setkus.lt.superhero"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="lt.setkus.superhero.app.SuperHeroApplication"
         android:icon="@mipmap/ic_launcher"
