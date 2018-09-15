@@ -6,6 +6,8 @@ ext {
     dagger2Version = "2.16"
     javaxAnnotationVersion = "3.1.1"
     retrofitVersion = "2.4.0"
+    okHttpVersion = "3.11.0"
+    timberVersion = "4.7.1"
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -21,7 +23,10 @@ ext {
             dagger2Compiler     : "com.google.dagger:dagger-compiler:$dagger2Version",
             javaxAnnotation     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             retrofit            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+            retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            okHttp              : "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            okHttpInterceptor   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+            timber              : "com.jakewharton.timber:timber:$timberVersion"
     ]
 
     appTestDependencies = [

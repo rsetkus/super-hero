@@ -48,6 +48,10 @@ dependencies {
 
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitGson
+    implementation appDependencies.okHttp
+    implementation appDependencies.okHttpInterceptor
+
+    implementation appDependencies.timber
 
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
