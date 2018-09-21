@@ -3,7 +3,7 @@ ext {
     klintVersion = "0.26.0"
     supportVersion = "27.1.1"
     constraintLayoutVersion = "1.1.1"
-    dagger2Version = "2.16"
+    koinVersion = "1.0.0"
     javaxAnnotationVersion = "3.1.1"
     retrofitVersion = "2.4.0"
     okHttpVersion = "3.11.0"
@@ -19,8 +19,7 @@ ext {
             ktlint              : "com.github.shyiko:ktlint:$klintVersion",
             appCompat           : "com.android.support:appcompat-v7:$supportVersion",
             constraintLayout    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
-            dagger2             : "com.google.dagger:dagger:$dagger2Version",
-            dagger2Compiler     : "com.google.dagger:dagger-compiler:$dagger2Version",
+            koin                : "org.koin:koin-android:$koinVersion",
             javaxAnnotation     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             retrofit            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
