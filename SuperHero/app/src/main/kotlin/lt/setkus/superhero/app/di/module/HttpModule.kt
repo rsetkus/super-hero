@@ -1,14 +1,8 @@
 package lt.setkus.superhero.app.di.module
 
-import dagger.Module
-import dagger.Provides
-import lt.setkus.superhero.data.http.CharacterService
 import lt.setkus.superhero.data.http.MarvelService
+import org.koin.dsl.module.module
 
-@Module
-object HttpModule {
-
-    @Provides
-    @JvmStatic
-    internal fun provideCharacterService(): CharacterService = MarvelService.getCharacterService()
+val HttpModule = module {
+    factory { MarvelService.getCharacterService() }
 }
