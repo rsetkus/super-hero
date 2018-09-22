@@ -20,9 +20,24 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        def publicKey = properties.getProperty('marvel.publickey')
+        def privateKey = properties.getProperty('marvel.privatekey')
+        def superHeroKey = properties.getProperty('superhero.key')
+
+        debug {
+            buildConfigField "int[]", "PUBLIC_KEY", "{${publicKey}}"
+            buildConfigField "int[]", "PRIVATE_KEY", "{${privateKey}}"
+            buildConfigField "String", "KEY", "\"${superHeroKey}\""
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "int[]", "PUBLIC_KEY", "{${publicKey}}"
+            buildConfigField "int[]", "PRIVATE_KEY", "{${privateKey}}"
+            buildConfigField "String", "KEY", "\"${superHeroKey}\""
         }
     }
 
