@@ -86,3 +86,4 @@ task ktlint(type: JavaExec, group: "verification") {
     // see https://github.com/shyiko/ktlint#usage for more
 }
 check.dependsOn ktlint
+preBuild.dependsOn ktlint
