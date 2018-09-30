@@ -58,6 +58,9 @@ dependencies {
 
     implementation appDependencies.koin
 
+    implementation appDependencies.androidLifecycle
+    implementation appDependencies.androidLifecycleKotlinExtensions
+
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitGson
     implementation appDependencies.okHttp

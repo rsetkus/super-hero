@@ -8,6 +8,8 @@ ext {
     retrofitVersion = "2.4.0"
     okHttpVersion = "3.11.0"
     timberVersion = "4.7.1"
+    androidLifecycleVersion = '1.1.1'
+    androidXLifecycleVersion = '2.0.0-beta01'
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -15,17 +17,19 @@ ext {
     espressoVersion = "3.0.2"
 
     appDependencies = [
-            kotlinStdLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-            ktlint              : "com.github.shyiko:ktlint:$klintVersion",
-            appCompat           : "com.android.support:appcompat-v7:$supportVersion",
-            constraintLayout    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
-            koin                : "org.koin:koin-android:$koinVersion",
-            javaxAnnotation     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
-            retrofit            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            okHttp              : "com.squareup.okhttp3:okhttp:$okHttpVersion",
-            okHttpInterceptor   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
-            timber              : "com.jakewharton.timber:timber:$timberVersion"
+            kotlinStdLib                        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            ktlint                              : "com.github.shyiko:ktlint:$klintVersion",
+            appCompat                           : "com.android.support:appcompat-v7:$supportVersion",
+            constraintLayout                    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+            koin                                : "org.koin:koin-android:$koinVersion",
+            javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
+            retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGson                        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            okHttp                              : "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            okHttpInterceptor                   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+            timber                              : "com.jakewharton.timber:timber:$timberVersion",
+            androidLifecycle                    : "android.arch.lifecycle:viewmodel:$androidLifecycleVersion",
+            androidLifecycleKotlinExtensions    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion"
     ]
 
     appTestDependencies = [
