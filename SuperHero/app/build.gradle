@@ -46,6 +46,12 @@ android {
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
 }
 
 dependencies {
@@ -72,8 +78,11 @@ dependencies {
     implementation appDependencies.constraintLayout
 
     testImplementation appTestDependencies.junit
+    testImplementation appTestDependencies.mockito
     testImplementation appTestDependencies.kotlinStdLib
     testImplementation appTestDependencies.kotlinJunitTest
+
+    testImplementation appTestDependencies.androidLifeCycleTestCore
 
     androidTestImplementation appTestDependencies.androidTestRunner
     androidTestImplementation appTestDependencies.espressoCore
