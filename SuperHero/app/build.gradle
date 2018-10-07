@@ -78,7 +78,7 @@ dependencies {
     implementation appDependencies.constraintLayout
 
     testImplementation appTestDependencies.junit
-    testImplementation appTestDependencies.mockito
+    testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.kotlinStdLib
     testImplementation appTestDependencies.kotlinJunitTest
 

@@ -1,35 +1,32 @@
 package lt.setkus.superhero.app.heroes
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+import lt.setkus.superhero.domain.heroes.SuperHero
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito.verify
-import org.mockito.MockitoAnnotations
 
 class SuperHeroesViewModelTest {
 
-    @get:Rule
-    var instantExecutorRule = InstantTaskExecutorRule()
-    @Mock
-    private lateinit var superHeroesRepository: SuperHeroesRepository
-
+    private val superHeroesRepository = mockk<SuperHeroesRepository>()
     private lateinit var superHeroesViewModel: SuperHeroesViewModel
+
+    private val superHeroes = listOf(SuperHero("Iron Man"), SuperHero("Hulk"))
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        every { superHeroesRepository.loadSuperHeroes() } returns superHeroes
 
         superHeroesViewModel = SuperHeroesViewModel(superHeroesRepository)
     }
 
     @Test
-    fun `when tasks loaded from repository then should delegate to view callback`() {
+    fun `when tasks are received from repository then should load to the view`() {
         with(superHeroesViewModel) {
             loadSuperHeroes()
-            verify(superHeroesRepository).loadSuperHeroes()
+            verify { superHeroesRepository.loadSuperHeroes() }
         }
     }
 }

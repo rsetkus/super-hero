@@ -15,7 +15,7 @@ ext {
     kotlinJunitTestVersion = "1.0.6"
     testRunnerVersion = "1.0.2"
     espressoVersion = "3.0.2"
-    mockitoVersion = "2.22.0"
+    mockkVersion = "1.8.9"
 
     appDependencies = [
             kotlinStdLib                        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
@@ -35,7 +35,7 @@ ext {
 
     appTestDependencies = [
             junit                       : "junit:junit:$junitVersion",
-            mockito                     : "org.mockito:mockito-core:$mockitoVersion",
+            mockk                       : "io.mockk:mockk:$mockkVersion",
             kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinJunitTest             : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
             androidTestRunner           : "com.android.support.test:runner:$testRunnerVersion",
