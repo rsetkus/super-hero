@@ -79,6 +79,7 @@ dependencies {
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
+    testImplementation appTestDependencies.assertJ
     testImplementation appTestDependencies.kotlinStdLib
     testImplementation appTestDependencies.kotlinJunitTest
 

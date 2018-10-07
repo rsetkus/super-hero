@@ -16,6 +16,7 @@ ext {
     testRunnerVersion = "1.0.2"
     espressoVersion = "3.0.2"
     mockkVersion = "1.8.9"
+    assertJVersion = "2.9.1"
 
     appDependencies = [
             kotlinStdLib                        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
@@ -36,10 +37,11 @@ ext {
     appTestDependencies = [
             junit                       : "junit:junit:$junitVersion",
             mockk                       : "io.mockk:mockk:$mockkVersion",
+            assertJ                     : "org.assertj:assertj-core:$assertJVersion",
             kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinJunitTest             : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
             androidTestRunner           : "com.android.support.test:runner:$testRunnerVersion",
             espressoCore                : "com.android.support.test.espresso:espresso-core:$espressoVersion",
-            androidLifeCycleTestCore    :   "android.arch.core:core-testing:$androidLifecycleVersion"
+            androidLifeCycleTestCore    : "android.arch.core:core-testing:$androidLifecycleVersion"
     ]
 }
