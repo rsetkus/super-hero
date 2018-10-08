@@ -1,12 +1,13 @@
 ext {
-    kotlinVersion = "1.2.60"
+    kotlinVersion = "1.2.71"
     kotlinCoroutinesVersion = "0.30.2"
     klintVersion = "0.26.0"
     supportVersion = "27.1.1"
     constraintLayoutVersion = "1.1.1"
-    koinVersion = "1.0.0"
+    koinVersion = "1.0.1"
     javaxAnnotationVersion = "3.1.1"
     retrofitVersion = "2.4.0"
+    retrofitCoroutinesAdapterVersion = "1.0.0"
     okHttpVersion = "3.11.0"
     timberVersion = "4.7.1"
     androidLifecycleVersion = '1.1.1'
@@ -27,9 +28,11 @@ ext {
             appCompat                           : "com.android.support:appcompat-v7:$supportVersion",
             constraintLayout                    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
+            koinViewModel                       : "org.koin:koin-android-viewmodel:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGson                        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitCoroutines                  : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$retrofitCoroutinesAdapterVersion",
             okHttp                              : "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpInterceptor                   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             timber                              : "com.jakewharton.timber:timber:$timberVersion",

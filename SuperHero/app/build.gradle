@@ -71,12 +71,14 @@ dependencies {
     implementation appDependencies.kotlinAndroidCoroutines
 
     implementation appDependencies.koin
+    implementation appDependencies.koinViewModel
 
     implementation appDependencies.androidLifecycle
     implementation appDependencies.androidLifecycleKotlinExtensions
 
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitGson
+    implementation appDependencies.retrofitCoroutines
     implementation appDependencies.okHttp
     implementation appDependencies.okHttpInterceptor
 
