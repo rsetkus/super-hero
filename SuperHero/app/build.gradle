@@ -9,6 +9,12 @@ configurations {
     ktlint
 }
 
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -61,6 +67,8 @@ dependencies {
     ktlint appDependencies.ktlint
 
     implementation appDependencies.kotlinStdLib
+    implementation appDependencies.kotlinCoroutines
+    implementation appDependencies.kotlinAndroidCoroutines
 
     implementation appDependencies.koin
 

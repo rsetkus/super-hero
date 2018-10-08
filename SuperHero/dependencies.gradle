@@ -1,5 +1,6 @@
 ext {
     kotlinVersion = "1.2.60"
+    kotlinCoroutinesVersion = "0.30.2"
     klintVersion = "0.26.0"
     supportVersion = "27.1.1"
     constraintLayoutVersion = "1.1.1"
@@ -20,6 +21,8 @@ ext {
 
     appDependencies = [
             kotlinStdLib                        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            kotlinCoroutines                    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion",
+            kotlinAndroidCoroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion",
             ktlint                              : "com.github.shyiko:ktlint:$klintVersion",
             appCompat                           : "com.android.support:appcompat-v7:$supportVersion",
             constraintLayout                    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
