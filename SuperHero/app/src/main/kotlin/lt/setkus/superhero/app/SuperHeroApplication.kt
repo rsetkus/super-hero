@@ -4,7 +4,6 @@ import android.app.Application
 import lt.setkus.superhero.app.di.module.httpModule
 import lt.setkus.superhero.app.heroes.superHeroesModule
 import org.koin.android.ext.android.startKoin
-import org.koin.dsl.module.Module
 import superhero.setkus.lt.superhero.BuildConfig
 import timber.log.Timber
 
