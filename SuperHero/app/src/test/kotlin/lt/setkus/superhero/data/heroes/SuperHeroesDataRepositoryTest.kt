@@ -12,7 +12,7 @@ class SuperHeroesDataRepositoryTest {
 
     private val service = mockk<CharacterService>()
     private val call = mockk<Call<CharacterDataWrapper>>(relaxed = true)
-
+git
     private lateinit var dataRepository: SuperHeroesDataRepository
 
     @Before
