@@ -19,7 +19,7 @@ class SuperHeroesDataRepository(
     }
 
     private fun flatMap(wrapper: CharacterDataWrapper?): Result<List<SuperHero>> {
-        val superHeroes = wrapper?.data?.results?.map { SuperHero("") } ?: listOf()
+        val superHeroes = wrapper?.data?.results?.map { SuperHero(it.name ?: "no name") } ?: listOf()
         return Result.Success(superHeroes)
     }
 }
