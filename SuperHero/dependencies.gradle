@@ -27,6 +27,7 @@ ext {
             appCompat                           : "androidx.appcompat:appcompat:$supportVersion",
             constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
+            koinViewModel                       : "org.koin:koin-androidx-viewmodel:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGson                        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
