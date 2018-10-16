@@ -1,5 +1,6 @@
 package lt.setkus.superhero.data.http
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import lt.setkus.superhero.utils.getPrivateKey
 import lt.setkus.superhero.utils.getPublicKey
 import lt.setkus.superhero.utils.md5
@@ -18,6 +19,7 @@ interface MarvelService {
         private val retrofit: Retrofit = Retrofit.Builder()
                 .client(getClient())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .baseUrl("https://gateway.marvel.com")
                 .build()
 
