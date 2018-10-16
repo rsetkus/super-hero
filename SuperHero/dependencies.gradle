@@ -2,8 +2,8 @@ ext {
     kotlinVersion = "1.2.71"
     kotlinCoroutinesVersion = "0.30.2"
     klintVersion = "0.26.0"
-    supportVersion = "27.1.1"
-    constraintLayoutVersion = "1.1.1"
+    supportVersion = "1.0.0"
+    constraintLayoutVersion = "1.1.2"
     koinVersion = "1.0.1"
     javaxAnnotationVersion = "3.1.1"
     retrofitVersion = "2.4.0"
@@ -14,8 +14,8 @@ ext {
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
-    testRunnerVersion = "1.0.2"
-    espressoVersion = "3.0.2"
+    testRunnerVersion = "1.1.0-alpha3"
+    espressoVersion = "3.1.0-alpha3"
     mockkVersion = "1.8.9"
     assertJVersion = "2.9.1"
 
@@ -24,8 +24,8 @@ ext {
             kotlinCoroutines                    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion",
             kotlinAndroidCoroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion",
             ktlint                              : "com.github.shyiko:ktlint:$klintVersion",
-            appCompat                           : "com.android.support:appcompat-v7:$supportVersion",
-            constraintLayout                    : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+            appCompat                           : "androidx.appcompat:appcompat:$supportVersion",
+            constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
@@ -44,8 +44,8 @@ ext {
             assertJ                     : "org.assertj:assertj-core:$assertJVersion",
             kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinJunitTest             : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
-            androidTestRunner           : "com.android.support.test:runner:$testRunnerVersion",
-            espressoCore                : "com.android.support.test.espresso:espresso-core:$espressoVersion",
+            androidTestRunner           : "androidx.test:runner:$testRunnerVersion",
+            espressoCore                : "androidx.test.espresso:espresso-core:$espressoVersion",
             androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$androidXLifecycleVersion"
     ]
 }
