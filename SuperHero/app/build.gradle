@@ -16,7 +16,7 @@ kotlin {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "superhero.setkus.lt.superhero"
         minSdkVersion 19
@@ -73,8 +73,8 @@ dependencies {
 
     implementation appDependencies.koin
 
-    implementation appDependencies.androidLifecycle
     implementation appDependencies.androidLifecycleKotlinExtensions
+    implementation appDependencies.androidLifecycleExtensions
 
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitGson

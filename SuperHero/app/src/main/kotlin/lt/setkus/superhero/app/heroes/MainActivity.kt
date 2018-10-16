@@ -1,13 +1,13 @@
 package lt.setkus.superhero.app.heroes
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import lt.setkus.superhero.app.common.ViewState
 import superhero.setkus.lt.superhero.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
 
     private lateinit var viewModel: SuperHeroesViewModel
 

@@ -10,8 +10,7 @@ ext {
     retrofitCoroutinesAdapterVersion = "1.0.0"
     okHttpVersion = "3.11.0"
     timberVersion = "4.7.1"
-    androidLifecycleVersion = '1.1.1'
-    androidXLifecycleVersion = '2.0.0-beta01'
+    androidXLifecycleVersion = '2.0.0'
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -35,8 +34,8 @@ ext {
             okHttp                              : "com.squareup.okhttp3:okhttp:$okHttpVersion",
             okHttpInterceptor                   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             timber                              : "com.jakewharton.timber:timber:$timberVersion",
-            androidLifecycle                    : "android.arch.lifecycle:viewmodel:$androidLifecycleVersion",
-            androidLifecycleKotlinExtensions    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion"
+            androidLifecycleKotlinExtensions    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion",
+            androidLifecycleExtensions          : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion"
     ]
 
     appTestDependencies = [
@@ -47,6 +46,6 @@ ext {
             kotlinJunitTest             : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
             androidTestRunner           : "com.android.support.test:runner:$testRunnerVersion",
             espressoCore                : "com.android.support.test.espresso:espresso-core:$espressoVersion",
-            androidLifeCycleTestCore    : "android.arch.core:core-testing:$androidLifecycleVersion"
+            androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$androidXLifecycleVersion"
     ]
 }
