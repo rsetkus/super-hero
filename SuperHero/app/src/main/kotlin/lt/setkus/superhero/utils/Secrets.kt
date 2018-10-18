@@ -1,7 +1,7 @@
 package lt.setkus.superhero.utils
 
 import android.util.Base64
-import superhero.setkus.lt.superhero.BuildConfig
+import lt.setkus.superhero.BuildConfig
 
 fun getPrivateKey(): String = decodeBase64(decrypt(BuildConfig.PRIVATE_KEY, BuildConfig.KEY))
 fun getPublicKey(): String = decodeBase64(decrypt(BuildConfig.PUBLIC_KEY, BuildConfig.KEY))
