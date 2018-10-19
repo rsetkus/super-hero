@@ -46,6 +46,7 @@ ext {
             kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinJunitTest             : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinJunitTestVersion",
             androidTestRunner           : "androidx.test:runner:$testRunnerVersion",
+            androidTestRules            : "androidx.test:rules:$testRunnerVersion",
             espressoCore                : "androidx.test.espresso:espresso-core:$espressoVersion",
             androidLifeCycleTestCore    : "androidx.arch.core:core-testing:$androidXLifecycleVersion"
     ]
