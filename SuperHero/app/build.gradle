@@ -23,7 +23,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
     buildTypes {
@@ -99,6 +99,7 @@ dependencies {
     androidTestImplementation appTestDependencies.androidTestRunner
     androidTestImplementation appTestDependencies.androidTestRules
     androidTestImplementation appTestDependencies.espressoCore
+    androidTestImplementation appTestDependencies.mockWebServer
 }
 
 task ktlint(type: JavaExec, group: "verification") {
