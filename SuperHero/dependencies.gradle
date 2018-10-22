@@ -11,6 +11,7 @@ ext {
     okHttpVersion = "3.11.0"
     timberVersion = "4.7.1"
     androidXLifecycleVersion = '2.0.0'
+    recyclerViewVersion = "1.0.0"
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -27,6 +28,7 @@ ext {
             ktlint                              : "com.github.shyiko:ktlint:$klintVersion",
             appCompat                           : "androidx.appcompat:appcompat:$supportVersion",
             constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            recyclerView                        : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
             koinViewModel                       : "org.koin:koin-androidx-viewmodel:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
