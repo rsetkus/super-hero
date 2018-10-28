@@ -22,8 +22,11 @@ class SuperHeroesViewModel(
         superHeroesLiveData.value = ViewState.Loading()
         val superHeroes = withContext(backgroundContext) { repository.loadSuperHeroes() }
         when (superHeroes) {
-            is Result.Success -> superHeroesLiveData.value = ViewState.Success(superHeroes.data)
-            is Result.Error -> superHeroesLiveData.postValue(ViewState.Error(superHeroes.exception))
+            is Result.Success -> {
+                val viewData = superHeroes.data.map { SuperHeroViewData(it.name) }
+                superHeroesLiveData.value = ViewState.Success(viewData)
+            }
+            is Result.Error -> superHeroesLiveData.value = ViewState.Error(superHeroes.exception)
         }
         superHeroesLiveData.value = ViewState.Finished()
     }

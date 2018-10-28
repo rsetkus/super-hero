@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
@@ -15,11 +16,17 @@ class SuperHeroesFragment : Fragment() {
 
     private lateinit var grid: RecyclerView
 
+    private lateinit var layoutManager: GridLayoutManager
+    private val adapter = SuperHeroesAdapter()
+
     private val viewModel: SuperHeroesViewModel by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.super_heroes_fragment, container, false)
         grid = rootView.findViewById(R.id.grid)
+        layoutManager = GridLayoutManager(context, 3)
+        grid.layoutManager = layoutManager
+        grid.adapter = adapter
 
         return rootView
     }
@@ -28,7 +35,11 @@ class SuperHeroesFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         val observer = Observer<ViewState> { viewState ->
-            println(viewState)
+            when (viewState) {
+                is ViewState.Success<*> -> {
+                    adapter.addSuperHeroes(viewState.data as List<SuperHeroViewData>)
+                }
+            }
         }
 
         viewModel.superHeroesLiveData.observe(this, observer)
