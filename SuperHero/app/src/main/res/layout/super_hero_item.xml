@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<lt.setkus.superhero.app.ui.widget.FourThreeLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:elevation="@dimen/z_card"
+    android:background="@color/designer_news"
+    android:foreground="@drawable/light_ripple"
+    android:stateListAnimator="@animator/raise"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/super_hero_name"
@@ -11,4 +16,4 @@
         android:layout_height="match_parent"
         tools:text="SuperHero"/>
 
-</LinearLayout>
+</lt.setkus.superhero.app.ui.widget.FourThreeLinearLayout>
