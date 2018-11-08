@@ -7,19 +7,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import lt.setkus.superhero.R
 
-class SuperHeroesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SuperHeroesAdapter : RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroViewHolder>() {
 
     private val superHeroes = arrayListOf<SuperHeroViewData>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.super_hero_item, parent, false)
         return SuperHeroViewHolder(itemView)
     }
 
     override fun getItemCount(): Int = superHeroes.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SuperHeroViewHolder).bindData(superHeroes[position])
+    override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
+        holder.bindData(superHeroes[position])
     }
 
     fun addSuperHeroes(items: List<SuperHeroViewData>) {
@@ -27,7 +27,7 @@ class SuperHeroesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    private inner class SuperHeroViewHolder : RecyclerView.ViewHolder {
+    inner class SuperHeroViewHolder : RecyclerView.ViewHolder {
 
         private var name: TextView
 

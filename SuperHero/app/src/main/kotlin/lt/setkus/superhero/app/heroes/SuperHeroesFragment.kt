@@ -21,14 +21,23 @@ class SuperHeroesFragment : Fragment() {
 
     private val viewModel: SuperHeroesViewModel by inject()
 
+    private var numColumns = 2 // default number of columns in the grid
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.super_heroes_fragment, container, false)
+
+        bindResources()
+
         grid = rootView.findViewById(R.id.grid)
-        layoutManager = GridLayoutManager(context, 3)
+        layoutManager = GridLayoutManager(context, numColumns)
         grid.layoutManager = layoutManager
         grid.adapter = adapter
 
         return rootView
+    }
+
+    private fun bindResources() {
+        numColumns = resources.getInteger(R.integer.num_columns)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

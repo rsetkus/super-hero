@@ -5,4 +5,5 @@
     <dimen name="z_card">2dp</dimen>
     <dimen name="touch_raise">6dp</dimen>
 
+    <integer name="num_columns">2</integer>
 </resources>
