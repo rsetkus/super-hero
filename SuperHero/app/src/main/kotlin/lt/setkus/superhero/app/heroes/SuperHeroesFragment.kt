@@ -12,6 +12,8 @@ import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
 import org.koin.android.ext.android.inject
 
+private const val DEFAULT_NUMBER_OF_COLUMNS = 2
+
 class SuperHeroesFragment : Fragment() {
 
     private lateinit var grid: RecyclerView
@@ -21,7 +23,7 @@ class SuperHeroesFragment : Fragment() {
 
     private val viewModel: SuperHeroesViewModel by inject()
 
-    private var numColumns = 2 // default number of columns in the grid
+    private var numColumns = DEFAULT_NUMBER_OF_COLUMNS
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.super_heroes_fragment, container, false)

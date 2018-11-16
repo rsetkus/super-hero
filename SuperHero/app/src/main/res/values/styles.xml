@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.TilePrimary" parent="@android:style/TextAppearance.Material.Subhead">
+        <item name="android:textSize">@dimen/tile_normal_text_size</item>
+        <item name="android:fontFamily">@font/roboto_mono</item>
+    </style>
+
 </resources>
