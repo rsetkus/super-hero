@@ -12,6 +12,7 @@ ext {
     timberVersion = "4.7.1"
     androidXLifecycleVersion = '2.0.0'
     recyclerViewVersion = "1.0.0"
+    glideVersion = "4.8.0"
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -29,6 +30,7 @@ ext {
             appCompat                           : "androidx.appcompat:appcompat:$supportVersion",
             constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             recyclerView                        : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            glide                               : "com.github.bumptech.glide:glide:$glideVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
             koinViewModel                       : "org.koin:koin-androidx-viewmodel:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",

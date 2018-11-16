@@ -89,6 +89,8 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
 
+    implementation appDependencies.glide
+
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.assertJ
