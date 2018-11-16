@@ -18,12 +18,12 @@ kotlin {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "superhero.setkus.lt.superhero"
-        minSdkVersion 19
+        applicationId "lt.setkus.superhero"
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
     buildTypes {
@@ -87,6 +87,11 @@ dependencies {
 
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
+    implementation appDependencies.recyclerView
+
+    implementation (appDependencies.glide) {
+        exclude group: "com.android.support"
+    }
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
@@ -97,7 +102,9 @@ dependencies {
     testImplementation appTestDependencies.androidLifeCycleTestCore
 
     androidTestImplementation appTestDependencies.androidTestRunner
+    androidTestImplementation appTestDependencies.androidTestRules
     androidTestImplementation appTestDependencies.espressoCore
+    androidTestImplementation appTestDependencies.mockWebServer
 }
 
 task ktlint(type: JavaExec, group: "verification") {

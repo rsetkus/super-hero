@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Z-axis elevation -->
+    <dimen name="z_card">2dp</dimen>
+    <dimen name="touch_raise">6dp</dimen>
+
+    <integer name="num_columns">2</integer>
+
+    <dimen name="normal_padding">16dp</dimen>
+
+    <dimen name="tile_normal_text_size">24sp</dimen>
+</resources>
