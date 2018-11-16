@@ -89,7 +89,9 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
 
-    implementation appDependencies.glide
+    implementation (appDependencies.glide) {
+        exclude group: "com.android.support"
+    }
 
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockk
