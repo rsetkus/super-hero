@@ -6,6 +6,14 @@ import lt.setkus.superhero.domain.heroes.SuperHero
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
 import lt.setkus.superhero.utils.awaitResult
 
+private val mapCharacterToSuperHero = { character: Character ->
+    SuperHero(character.name ?: "no name", mapThumbnailToString(character.thumbnail))
+}
+
+private val mapThumbnailToString = { image: Image? ->
+    image?.path?.plus(".").plus(image?.extension)
+}
+
 class SuperHeroesDataRepository(
     val service: MarvelService
 ) : SuperHeroesRepository {
@@ -19,7 +27,7 @@ class SuperHeroesDataRepository(
     }
 
     private fun flatMap(wrapper: CharacterDataWrapper?): Result<List<SuperHero>> {
-        val superHeroes = wrapper?.data?.results?.map { SuperHero(it.name ?: "no name") } ?: listOf()
+        val superHeroes = wrapper?.data?.results?.map { mapCharacterToSuperHero(it) } ?: listOf()
         return Result.Success(superHeroes)
     }
 }

@@ -3,8 +3,10 @@ package lt.setkus.superhero.app.heroes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import lt.setkus.superhero.R
 
 class SuperHeroesAdapter : RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroViewHolder>() {
@@ -30,13 +32,24 @@ class SuperHeroesAdapter : RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroView
     inner class SuperHeroViewHolder : RecyclerView.ViewHolder {
 
         private var name: TextView
+        private var tileImage: ImageView
 
         constructor(itemView: View): super(itemView) {
             name = itemView.findViewById(R.id.super_hero_name)
+            tileImage = itemView.findViewById(R.id.super_hero_tile)
         }
 
         fun bindData(data: SuperHeroViewData) {
             name.text = data.name
+            loadImage(data.tileUrl)
+        }
+
+        private fun loadImage(url: String?) {
+            Glide
+                .with(itemView.context)
+                .load(url)
+                .centerCrop()
+                .into(tileImage)
         }
     }
 }
