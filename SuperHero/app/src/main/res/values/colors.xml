@@ -7,4 +7,7 @@
     <color name="super_hero_background">#6e6e6e</color> <!--light blue 500 -->-->
     <color name="ripple_light">#99ffffff</color>
 
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+
 </resources>

@@ -18,10 +18,10 @@
         android:id="@+id/super_hero_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/normal_padding"
         android:layout_marginEnd="@dimen/normal_padding"
         android:layout_marginStart="@dimen/normal_padding"
-        android:gravity="bottom"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:gravity="top"
         android:textAppearance="@style/TextAppearance.TilePrimary"
         tools:text="The Amazing Spider Man"/>
 
