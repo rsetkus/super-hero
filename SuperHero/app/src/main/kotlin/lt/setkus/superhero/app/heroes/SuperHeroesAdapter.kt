@@ -35,6 +35,7 @@ class SuperHeroesAdapter : RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroView
 
         fun bindData(data: SuperHeroViewData) {
             superHeroName.text = data.name
+            superHeroTile.contentDescription = data.name
             loadImage(data.tileUrl)
         }
 

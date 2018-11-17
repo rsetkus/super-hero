@@ -64,6 +64,10 @@ android {
             events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
         }
     }
+
+    lintOptions {
+        disable 'MergeRootFrame', 'ObsoleteLintCustomCheck', 'GoogleAppIndexingWarning'
+    }
 }
 
 dependencies {
