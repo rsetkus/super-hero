@@ -10,12 +10,12 @@
     android:stateListAnimator="@animator/raise">
 
     <ImageView
-        android:id="@+id/super_hero_tile"
+        android:id="@+id/superHeroTile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <TextView
-        android:id="@+id/super_hero_name"
+        android:id="@+id/superHeroName"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/normal_padding"
