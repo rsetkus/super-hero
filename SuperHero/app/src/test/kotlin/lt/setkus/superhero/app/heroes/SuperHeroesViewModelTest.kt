@@ -24,7 +24,7 @@ class SuperHeroesViewModelTest {
     private val superHeroesRepository = mockk<SuperHeroesRepository>(relaxed = true)
     private lateinit var superHeroesViewModel: SuperHeroesViewModel
 
-    private val listOfSuperHeroes = listOf(SuperHero("Iron Man"), SuperHero("Hulk"))
+    private val listOfSuperHeroes = listOf(SuperHero("Iron Man", "imageUrl"), SuperHero("Hulk", "imageUrl"))
     private val successfulSuperHeroesResult = Result.Success(listOfSuperHeroes)
 
     @Before

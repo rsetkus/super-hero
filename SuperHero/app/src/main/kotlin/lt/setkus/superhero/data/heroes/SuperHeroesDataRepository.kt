@@ -1,6 +1,6 @@
 package lt.setkus.superhero.data.heroes
 
-import lt.setkus.superhero.data.http.MarvelService
+import lt.setkus.superhero.data.http.CharacterService
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
@@ -15,11 +15,11 @@ private val mapThumbnailToString = { image: Image? ->
 }
 
 class SuperHeroesDataRepository(
-    val service: MarvelService
+    val service: CharacterService
 ) : SuperHeroesRepository {
 
     override suspend fun loadSuperHeroes(): Result<List<SuperHero>> {
-        val result = service.getCharacterService().getCharacters().awaitResult()
+        val result = service.getCharacters().awaitResult()
         return when (result) {
             is Result.Error -> result
             is Result.Success -> flatMap(result.data)
