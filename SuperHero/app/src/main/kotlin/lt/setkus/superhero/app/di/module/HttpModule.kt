@@ -9,7 +9,7 @@ import org.koin.dsl.module.module
 val httpModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofit(get()) }
-    single { MarvelService(get()) }
+    single { MarvelService.createCharacterService(get()) }
     single(name = "uiContext") { AppExecutors().uiContext }
     single(name = "networkContext") { AppExecutors().networkContext }
 }

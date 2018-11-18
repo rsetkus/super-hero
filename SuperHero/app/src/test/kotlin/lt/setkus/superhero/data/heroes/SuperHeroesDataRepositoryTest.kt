@@ -15,7 +15,8 @@ const val SUPER_HERO_NAME: String = "Mikas"
 
 class SuperHeroesDataRepositoryTest {
 
-    private val listOfCharacters = listOf(Character(SUPER_HERO_NAME))
+    private val image = Image("path", "jpg")
+    private val listOfCharacters = listOf(Character(SUPER_HERO_NAME, image))
     private val exception = Exception("Houston we have a problem...")
     private val successfulService: CharacterService = FakeCharacterService(listOfCharacters)
     private val erroneousService: CharacterService = FakeCharacterService(exception)
@@ -27,7 +28,7 @@ class SuperHeroesDataRepositoryTest {
         dataRepository = SuperHeroesDataRepository(successfulService)
         runBlocking {
             val result = dataRepository.loadSuperHeroes() as Result.Success
-            assertThat(result.data).contains(SuperHero(SUPER_HERO_NAME)).hasSize(listOfCharacters.size)
+            assertThat(result.data).contains(SuperHero(SUPER_HERO_NAME, "path.jpg")).hasSize(listOfCharacters.size)
         }
     }
 

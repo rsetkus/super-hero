@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.super_heroes_fragment.grid
 import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
 import org.koin.android.ext.android.inject
@@ -16,8 +16,6 @@ private const val DEFAULT_NUMBER_OF_COLUMNS = 2
 
 class SuperHeroesFragment : Fragment() {
 
-    private lateinit var grid: RecyclerView
-
     private lateinit var layoutManager: GridLayoutManager
     private val adapter = SuperHeroesAdapter()
 
@@ -25,17 +23,17 @@ class SuperHeroesFragment : Fragment() {
 
     private var numColumns = DEFAULT_NUMBER_OF_COLUMNS
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.super_heroes_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        inflater.inflate(R.layout.super_heroes_fragment, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         bindResources()
 
-        grid = rootView.findViewById(R.id.grid)
         layoutManager = GridLayoutManager(context, numColumns)
         grid.layoutManager = layoutManager
         grid.adapter = adapter
-
-        return rootView
     }
 
     private fun bindResources() {
