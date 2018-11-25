@@ -98,6 +98,10 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
 
+    releaseImplementation appDependencies.leakCanaryRelease
+    debugImplementation appDependencies.leakCanaryDebug
+    debugImplementation appDependencies.leakCanaryDebugFragments
+
     implementation (appDependencies.glide) {
         exclude group: "com.android.support"
     }
