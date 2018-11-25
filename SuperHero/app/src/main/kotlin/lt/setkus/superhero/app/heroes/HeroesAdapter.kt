@@ -4,34 +4,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.super_hero_item.superHeroName
-import kotlinx.android.synthetic.main.super_hero_item.superHeroTile
+import kotlinx.android.synthetic.main.item_hero.superHeroName
+import kotlinx.android.synthetic.main.item_hero.superHeroTile
 import lt.setkus.superhero.R
 
-class SuperHeroesAdapter : RecyclerView.Adapter<SuperHeroesAdapter.SuperHeroViewHolder>() {
+class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
 
     private val superHeroes = arrayListOf<SuperHeroViewData>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.super_hero_item, parent, false)
-        return SuperHeroViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
+        val containerView = LayoutInflater.from(parent.context).inflate(R.layout.item_hero, parent, false)
+        return HeroViewHolder(containerView)
     }
 
-    override fun getItemCount(): Int = superHeroes.size
+    override fun getItemCount() = superHeroes.size
 
-    override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HeroViewHolder, position: Int) =
         holder.bindData(superHeroes[position])
-    }
 
     fun addSuperHeroes(items: List<SuperHeroViewData>) {
         superHeroes.addAll(items)
         notifyDataSetChanged()
     }
 
-    inner class SuperHeroViewHolder(override val containerView: View) : ViewHolder(containerView), LayoutContainer {
+    inner class HeroViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bindData(data: SuperHeroViewData) {
             superHeroName.text = data.name

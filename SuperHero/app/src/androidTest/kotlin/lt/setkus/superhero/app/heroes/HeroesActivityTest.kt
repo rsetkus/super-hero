@@ -18,12 +18,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class HeroesActivityTest {
 
     val mockWebServer = MockWebServer()
 
     @get:Rule
-    var activityTestRule = MockApiActivityTestRule(MainActivity::class.java)
+    var activityTestRule = MockApiActivityTestRule(HeroesActivity::class.java)
 
     @Before
     fun setUp() {
