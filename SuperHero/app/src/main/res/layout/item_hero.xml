@@ -7,7 +7,9 @@
     android:elevation="@dimen/z_card"
     android:background="@color/super_hero_background"
     android:foreground="@drawable/light_ripple"
-    android:stateListAnimator="@animator/raise">
+    android:stateListAnimator="@animator/raise"
+    android:clickable="true"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/superHeroTile"
