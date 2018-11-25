@@ -13,6 +13,7 @@ ext {
     androidXLifecycleVersion = '2.0.0'
     recyclerViewVersion = "1.0.0"
     glideVersion = "4.9.0-SNAPSHOT"
+    leakCanaryVersion = "1.6.2"
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -34,6 +35,9 @@ ext {
             koin                                : "org.koin:koin-android:$koinVersion",
             koinViewModel                       : "org.koin:koin-androidx-viewmodel:$koinVersion",
             javaxAnnotation                     : "org.glassfish:javax.annotation:$javaxAnnotationVersion",
+            leakCanaryDebug                     : "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
+            leakCanaryDebugFragments            : "com.squareup.leakcanary:leakcanary-support-fragment:$leakCanaryVersion",
+            leakCanaryRelease                   : "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion",
             retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitGson                        : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             retrofitCoroutines                  : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$retrofitCoroutinesAdapterVersion",
