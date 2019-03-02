@@ -2,7 +2,7 @@ package lt.setkus.superhero.app.espresso
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.rule.ActivityTestRule
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext.loadKoinModules
 import retrofit2.Retrofit

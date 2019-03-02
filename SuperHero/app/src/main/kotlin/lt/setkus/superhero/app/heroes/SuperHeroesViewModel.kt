@@ -2,10 +2,10 @@ package lt.setkus.superhero.app.heroes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.experimental.CoroutineDispatcher
-import kotlinx.coroutines.experimental.GlobalScope
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.withContext
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import lt.setkus.superhero.app.common.ViewState
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
