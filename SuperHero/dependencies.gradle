@@ -13,6 +13,7 @@ ext {
     androidXLifecycleVersion = '2.0.0'
     recyclerViewVersion = "1.0.0"
     glideVersion = "4.9.0-SNAPSHOT"
+    navigationVersion = "1.0.0-rc02"
 
     junitVersion = "4.12"
     kotlinJunitTestVersion = "1.0.6"
@@ -41,7 +42,9 @@ ext {
             okHttpInterceptor                   : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             timber                              : "com.jakewharton.timber:timber:$timberVersion",
             androidLifecycleKotlinExtensions    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion",
-            androidLifecycleExtensions          : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion"
+            androidLifecycleExtensions          : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
+            navigationFragment                  : "android.arch.navigation:navigation-fragment:$navigationVersion",
+            navigationUi                        : "android.arch.navigation:navigation-ui:$navigationVersion"
     ]
 
     appTestDependencies = [

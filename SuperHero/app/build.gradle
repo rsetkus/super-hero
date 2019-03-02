@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 repositories {
     mavenCentral()
@@ -97,6 +98,9 @@ dependencies {
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
+
+    implementation appDependencies.navigationFragment
+    implementation appDependencies.navigationUi
 
     implementation (appDependencies.glide) {
         exclude group: "com.android.support"
