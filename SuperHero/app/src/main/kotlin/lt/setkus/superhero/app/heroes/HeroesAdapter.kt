@@ -3,11 +3,13 @@ package lt.setkus.superhero.app.heroes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_hero.superHeroName
-import kotlinx.android.synthetic.main.item_hero.superHeroTile
+import kotlinx.android.synthetic.main.item_hero.*
 import lt.setkus.superhero.R
 
 class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
@@ -35,6 +37,15 @@ class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
             superHeroName.text = data.name
             superHeroTile.contentDescription = data.name
             loadImage(data.tileUrl)
+
+            ViewCompat.setTransitionName(superHeroTile, data.name)
+
+            containerView.setOnClickListener {
+                val extras = FragmentNavigator.Extras.Builder()
+                    .addSharedElements(mapOf(superHeroTile to data.name))
+                    .build()
+                Navigation.findNavController(it).navigate(R.id.action_main_to_details, null, null, extras)
+            }
         }
 
         private fun loadImage(url: String?) {
