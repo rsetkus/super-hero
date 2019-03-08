@@ -17,5 +17,12 @@
         android:id="@+id/heroDetailsFragment"
         android:name="lt.setkus.superhero.app.details.HeroDetailsFragment"
         android:label="fragment_hero_details"
-        tools:layout="@layout/fragment_hero_details"/>
+        tools:layout="@layout/fragment_hero_details">
+        <argument
+            android:name="heroUrl"
+            app:argType="string"/>
+        <argument
+            android:name="heroName"
+            app:argType="string"/>
+    </fragment>
 </navigation>

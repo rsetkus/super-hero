@@ -8,8 +8,7 @@
     tools:context=".app.details.HeroDetailsFragment">
 
     <ImageView
-        android:id="@+id/header_image"
-        android:transitionName="@string/heroTileTransition"
+        android:id="@+id/headerImage"
         android:layout_width="0dp"
         android:layout_height="180dp"
         app:layout_constraintLeft_toLeftOf="parent"
