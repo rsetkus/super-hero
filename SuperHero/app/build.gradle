@@ -104,6 +104,7 @@ dependencies {
     testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.assertJ
     testImplementation appTestDependencies.kotlinStdLib
+    testImplementation appTestDependencies.kotlinCoroutines
     testImplementation appTestDependencies.kotlinJunitTest
 
     testImplementation appTestDependencies.androidLifeCycleTestCore
