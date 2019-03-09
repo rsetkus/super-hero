@@ -56,7 +56,7 @@ class SuperHeroesViewModelTest {
     }
 
     @Test
-    fun `after successfuly load should indicate finished state`() {
+    fun `after successfully load should indicate finished state`() {
         coEvery { superHeroesRepository.loadSuperHeroes() } returns successfulSuperHeroesResult
         with(superHeroesViewModel) {
             val testLiveData = superHeroesLiveData.testObserver()
