@@ -53,8 +53,4 @@ class HeroesFragment : Fragment() {
 
         viewModel.loadSuperHeroes()
     }
-
-    companion object {
-        fun newHeroesFragment() = HeroesFragment()
-    }
 }
