@@ -5,6 +5,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import lt.setkus.superhero.app.common.ViewState
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
@@ -64,5 +65,18 @@ class SuperHeroesViewModelTest {
             val receivedState = testLiveData.observedValues.get(2)
             assertTrue(receivedState is ViewState.Finished)
         }
+    }
+
+    @Test
+    fun `when view model is cleared then should cancel coroutine`() {
+        coEvery { superHeroesRepository.loadSuperHeroes()
+        } coAnswers {
+            delay(1000)
+            successfulSuperHeroesResult
+        }
+
+        superHeroesViewModel.loadSuperHeroes()
+        superHeroesViewModel.onCleared()
+        assertThat(superHeroesViewModel.job.isActive).isFalse()
     }
 }

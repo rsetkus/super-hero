@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import lt.setkus.superhero.app.common.ViewState
@@ -17,17 +18,25 @@ class SuperHeroesViewModel(
 ) : ViewModel() {
 
     val superHeroesLiveData = MutableLiveData<ViewState>()
+    internal lateinit var job: Job
 
-    fun loadSuperHeroes() = GlobalScope.launch(uiContext) {
-        superHeroesLiveData.value = ViewState.Loading()
-        val superHeroes = withContext(backgroundContext) { repository.loadSuperHeroes() }
-        when (superHeroes) {
-            is Result.Success -> {
-                val viewData = superHeroes.data.map { SuperHeroViewData(it.name, it.imageUrl) }
-                superHeroesLiveData.value = ViewState.Success(viewData)
+    fun loadSuperHeroes() {
+        job = GlobalScope.launch(uiContext) {
+            superHeroesLiveData.value = ViewState.Loading()
+            val superHeroes = withContext(backgroundContext) { repository.loadSuperHeroes() }
+            when (superHeroes) {
+                is Result.Success -> {
+                    val viewData = superHeroes.data.map { SuperHeroViewData(it.name, it.imageUrl) }
+                    superHeroesLiveData.value = ViewState.Success(viewData)
+                }
+                is Result.Error -> superHeroesLiveData.value = ViewState.Error(superHeroes.exception)
             }
-            is Result.Error -> superHeroesLiveData.value = ViewState.Error(superHeroes.exception)
+            superHeroesLiveData.value = ViewState.Finished()
         }
-        superHeroesLiveData.value = ViewState.Finished()
+    }
+
+    public override fun onCleared() {
+        super.onCleared()
+        job.cancel()
     }
 }
