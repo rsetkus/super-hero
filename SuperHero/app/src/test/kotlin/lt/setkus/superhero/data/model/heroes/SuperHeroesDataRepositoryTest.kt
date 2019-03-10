@@ -5,6 +5,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import lt.setkus.superhero.data.http.CharacterService
+import lt.setkus.superhero.data.model.Image
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
 import org.assertj.core.api.Assertions.assertThat

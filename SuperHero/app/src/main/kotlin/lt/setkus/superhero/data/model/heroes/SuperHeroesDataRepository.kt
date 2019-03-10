@@ -1,6 +1,7 @@
 package lt.setkus.superhero.data.model.heroes
 
 import lt.setkus.superhero.data.http.CharacterService
+import lt.setkus.superhero.data.model.Image
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository

@@ -1,10 +1,11 @@
 package lt.setkus.superhero.data.model.hero
 
 import com.google.gson.annotations.SerializedName
+import lt.setkus.superhero.data.model.Image
 
 data class ResultsItem(
-    @SerializedName("thumbnail")
-    val thumbnail: Thumbnail?,
+    @SerializedName("image")
+    val image: Image?,
     @SerializedName("urls")
     val urls: List<UrlsItem>??,
     @SerializedName("stories")
