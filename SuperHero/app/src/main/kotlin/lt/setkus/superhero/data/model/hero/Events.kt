@@ -1,8 +1,8 @@
-package lt.setkus.superhero.data.heroe
+package lt.setkus.superhero.data.hero
 
 import com.google.gson.annotations.SerializedName
 
-data class Stories(
+data class Events(
     @SerializedName("collectionURI")
     val collectionURI: String? = "",
     @SerializedName("available")

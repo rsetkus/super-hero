@@ -1,4 +1,4 @@
-package lt.setkus.superhero.data.heroe
+package lt.setkus.superhero.data.hero
 
 import com.google.gson.annotations.SerializedName
 
