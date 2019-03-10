@@ -1,4 +1,4 @@
-package lt.setkus.superhero.data.heroes
+package lt.setkus.superhero.data.model.heroes
 
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope

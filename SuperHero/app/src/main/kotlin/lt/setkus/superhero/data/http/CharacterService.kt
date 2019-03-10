@@ -1,7 +1,7 @@
 package lt.setkus.superhero.data.http
 
 import kotlinx.coroutines.Deferred
-import lt.setkus.superhero.data.heroes.CharacterDataWrapper
+import lt.setkus.superhero.data.model.heroes.CharacterDataWrapper
 import retrofit2.http.GET
 
 interface CharacterService {

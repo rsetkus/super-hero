@@ -1,4 +1,4 @@
-package lt.setkus.superhero.data.heroes
+package lt.setkus.superhero.data.model.heroes
 
 import lt.setkus.superhero.data.http.CharacterService
 import lt.setkus.superhero.domain.Result
