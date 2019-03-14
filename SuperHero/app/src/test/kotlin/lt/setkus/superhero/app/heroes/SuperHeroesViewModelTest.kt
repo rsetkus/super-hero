@@ -51,7 +51,7 @@ class SuperHeroesViewModelTest {
         with(superHeroesViewModel) {
             val testLiveData = superHeroesLiveData.testObserver()
             loadSuperHeroes()
-            val receivedState = testLiveData.observedValues.get(0)
+            val receivedState = testLiveData.observedValues.first()
             assertTrue(receivedState is ViewState.Loading)
         }
     }
@@ -69,7 +69,8 @@ class SuperHeroesViewModelTest {
 
     @Test
     fun `when view model is cleared then should cancel coroutine`() {
-        coEvery { superHeroesRepository.loadSuperHeroes()
+        coEvery {
+            superHeroesRepository.loadSuperHeroes()
         } coAnswers {
             delay(1000)
             successfulSuperHeroesResult
