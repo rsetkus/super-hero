@@ -6,6 +6,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import lt.setkus.superhero.data.http.CharacterService
 import lt.setkus.superhero.data.model.Image
+import lt.setkus.superhero.data.model.extensions.getImageUrlString
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
 import org.assertj.core.api.Assertions.assertThat
@@ -13,6 +14,7 @@ import org.junit.Test
 import kotlin.test.assertTrue
 
 const val SUPER_HERO_NAME: String = "Mikas"
+const val SUPER_HERO_ID = 123
 
 class SuperHeroesDataRepositoryTest {
 
@@ -41,21 +43,49 @@ class SuperHeroesDataRepositoryTest {
             assertTrue(result is Result.Error)
         }
     }
+
+    @Test
+    fun `when error on loading one hero then should return error result`() {
+        dataRepository = SuperHeroesDataRepository(erroneousService)
+        runBlocking {
+            val result = dataRepository.loadSuperHero(SUPER_HERO_ID)
+            assertTrue(result is Result.Error)
+        }
+    }
+
+    @Test
+    fun `when hero successfully is returned than should map to SuperHero`() {
+        dataRepository = SuperHeroesDataRepository(successfulService)
+        runBlocking {
+            val result = dataRepository.loadSuperHero(SUPER_HERO_ID) as Result.Success
+            assertThat(result.data).isEqualTo(SuperHero(SUPER_HERO_NAME, image.getImageUrlString()))
+        }
+    }
 }
 
 private class FakeCharacterService(val superHeroes: List<Character>) : CharacterService {
+
     var exception: Throwable? = null
+
+    override fun getCharacter(characterId: Int): Deferred<CharacterDataWrapper> {
+        return makeAsycnResponse()
+    }
+
+    private fun makeAsycnResponse(): Deferred<CharacterDataWrapper> {
+        return GlobalScope.async {
+            if (exception == null) {
+                CharacterDataWrapper(CharacterDataContainer(superHeroes))
+            } else {
+                throw Exception(exception)
+            }
+        }
+    }
 
     constructor(exception: Throwable) : this(listOf()) {
         this.exception = exception
     }
 
     override fun getCharacters(): Deferred<CharacterDataWrapper> {
-        return GlobalScope.async {
-            if (exception == null)
-                CharacterDataWrapper(CharacterDataContainer(superHeroes))
-            else
-                throw Exception(exception)
-        }
+        return makeAsycnResponse()
     }
 }

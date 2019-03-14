@@ -4,4 +4,5 @@ import lt.setkus.superhero.domain.Result
 
 interface SuperHeroesRepository {
     suspend fun loadSuperHeroes(): Result<List<SuperHero>>
+    suspend fun loadSuperHero(heroId: Int): Result<SuperHero>
 }
