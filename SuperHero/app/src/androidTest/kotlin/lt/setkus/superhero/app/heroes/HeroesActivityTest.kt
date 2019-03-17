@@ -3,6 +3,7 @@ package lt.setkus.superhero.app.heroes
 import android.content.Intent
 import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -16,6 +17,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
+private const val HEROES_PATH = "json/characters/characters.json"
+private const val HERO_PATH = "json/characters/character.json"
 
 @RunWith(AndroidJUnit4::class)
 class HeroesActivityTest {
@@ -37,13 +41,28 @@ class HeroesActivityTest {
 
     @Test
     fun onSuccessfulResultShouldSeeSuperHeroName() {
-
-        mockWebServer.enqueue(MockResponse()
-            .setResponseCode(200)
-            .setBody(getJson(InstrumentationRegistry.getContext(), "json/characters/characters.json"))
-        )
+        mockListHeroesResponse(HEROES_PATH)
 
         activityTestRule.launchActivity(Intent())
-        onView(withText("3-D Man")).check(matches(isDisplayed()))
+        onView(withText("Karvasnukis")).check(matches(isDisplayed()))
+    }
+
+    private fun mockListHeroesResponse(path: String) {
+        mockWebServer.enqueue(MockResponse()
+            .setResponseCode(200)
+            .setBody(getJson(InstrumentationRegistry.getContext(), path))
+        )
+    }
+
+    @Test
+    fun onSingleHeroTapShouldShowDetails() {
+        mockListHeroesResponse(HEROES_PATH)
+
+        activityTestRule.launchActivity(Intent())
+        onView(withText("Karvasnukis")).perform(click())
+        mockListHeroesResponse(HERO_PATH)
+
+        onView(withText("Karvasnukis")).check(matches(isDisplayed()))
+        onView(withText("Labai blogas blogietis")).check(matches(isDisplayed()))
     }
 }
