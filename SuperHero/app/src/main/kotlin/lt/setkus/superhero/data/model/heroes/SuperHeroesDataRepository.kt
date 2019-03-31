@@ -8,7 +8,12 @@ import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
 import lt.setkus.superhero.utils.awaitResult
 
 private val mapCharacterToSuperHero = { character: Character? ->
-    SuperHero(character?.name ?: "no name", character?.thumbnail?.getImageUrlString())
+    SuperHero(
+        character?.heroId ?: -1,
+        character?.name ?: "no name",
+        character?.description ?: "",
+        character?.thumbnail?.getImageUrlString()
+    )
 }
 
 class SuperHeroesDataRepository(

@@ -41,7 +41,8 @@ class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
             ViewCompat.setTransitionName(superHeroTile, data.name)
 
             containerView.setOnClickListener {
-                val directions = HeroesFragmentDirections.actionMainToDetails(data.tileUrl ?: "", data.name)
+                val directions = HeroesFragmentDirections
+                    .actionMainToDetails(data.tileUrl ?: "", data.name, data.heroId)
                 val extras = FragmentNavigator.Extras.Builder()
                     .addSharedElements(mapOf(superHeroTile to data.name))
                     .build()

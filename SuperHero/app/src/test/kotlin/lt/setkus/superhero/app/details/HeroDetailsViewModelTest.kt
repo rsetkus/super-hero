@@ -7,7 +7,6 @@ import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import lt.setkus.superhero.app.common.ViewState
-import lt.setkus.superhero.app.heroes.SuperHeroViewData
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
@@ -20,6 +19,7 @@ import kotlin.test.assertFalse
 
 private const val SUPER_HERO_ID = 1
 private const val SUPER_HERO_NAME = "Iron Man"
+private const val SUPER_HERO_DESCRIPTION = "description"
 private const val SUPER_HERO_IMAGE_URL = "imageUrl"
 
 class HeroDetailsViewModelTest {
@@ -29,9 +29,9 @@ class HeroDetailsViewModelTest {
 
     private val superHeroesRepository = mockk<SuperHeroesRepository>(relaxed = true)
 
-    private val superHero = SuperHero(SUPER_HERO_NAME, SUPER_HERO_IMAGE_URL)
+    private val superHero = SuperHero(SUPER_HERO_ID, SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION, SUPER_HERO_IMAGE_URL)
     private val successfulResult = Result.Success(superHero)
-    private val successfulViewState = ViewState.Success(SuperHeroViewData(SUPER_HERO_NAME, SUPER_HERO_IMAGE_URL))
+    private val successfulViewState = ViewState.Success(HeroDetailsViewData(SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION))
 
     private val error = Throwable("Error")
     private val errorResult = Result.Error(error)

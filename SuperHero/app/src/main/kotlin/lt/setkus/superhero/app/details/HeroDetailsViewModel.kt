@@ -8,7 +8,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import lt.setkus.superhero.app.common.ViewState
-import lt.setkus.superhero.app.heroes.SuperHeroViewData
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
 
@@ -26,7 +25,7 @@ class HeroDetailsViewModel(
             liveData.value = ViewState.Loading()
             val result = withContext(backgroundContext) { repository.loadSuperHero(heroId) }
             when (result) {
-                is Result.Success -> liveData.value = ViewState.Success(SuperHeroViewData(result.data.name, result.data.imageUrl))
+                is Result.Success -> liveData.value = ViewState.Success(HeroDetailsViewData(result.data.name, result.data.description))
                 is Result.Error -> liveData.value = ViewState.Error(result.exception)
             }
 

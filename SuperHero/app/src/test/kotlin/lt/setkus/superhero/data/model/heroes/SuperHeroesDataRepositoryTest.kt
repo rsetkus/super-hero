@@ -14,12 +14,13 @@ import org.junit.Test
 import kotlin.test.assertTrue
 
 const val SUPER_HERO_NAME: String = "Mikas"
+const val SUPER_HERO_DESCRIPTION = "description"
 const val SUPER_HERO_ID = 123
 
 class SuperHeroesDataRepositoryTest {
 
     private val image = Image("path", "jpg")
-    private val listOfCharacters = listOf(Character(SUPER_HERO_NAME, image))
+    private val listOfCharacters = listOf(Character(SUPER_HERO_ID, SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION, image))
     private val exception = Exception("Houston we have a problem...")
     private val successfulService: CharacterService = FakeCharacterService(listOfCharacters)
     private val erroneousService: CharacterService = FakeCharacterService(exception)
@@ -31,7 +32,8 @@ class SuperHeroesDataRepositoryTest {
         dataRepository = SuperHeroesDataRepository(successfulService)
         runBlocking {
             val result = dataRepository.loadSuperHeroes() as Result.Success
-            assertThat(result.data).contains(SuperHero(SUPER_HERO_NAME, "path.jpg")).hasSize(listOfCharacters.size)
+            assertThat(result.data).contains(SuperHero(SUPER_HERO_ID, SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION, "path.jpg")).hasSize(listOfCharacters
+                .size)
         }
     }
 
@@ -58,7 +60,7 @@ class SuperHeroesDataRepositoryTest {
         dataRepository = SuperHeroesDataRepository(successfulService)
         runBlocking {
             val result = dataRepository.loadSuperHero(SUPER_HERO_ID) as Result.Success
-            assertThat(result.data).isEqualTo(SuperHero(SUPER_HERO_NAME, image.getImageUrlString()))
+            assertThat(result.data).isEqualTo(SuperHero(SUPER_HERO_ID, SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION, image.getImageUrlString()))
         }
     }
 }
