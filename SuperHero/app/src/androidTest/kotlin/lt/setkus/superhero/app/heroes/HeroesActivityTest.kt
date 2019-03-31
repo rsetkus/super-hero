@@ -9,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.runner.AndroidJUnit4
 import lt.setkus.superhero.app.espresso.MockApiActivityTestRule
+import lt.setkus.superhero.app.espresso.OkHttpIdlingResourceRule
 import lt.setkus.superhero.util.getJson
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -28,6 +29,9 @@ class HeroesActivityTest {
 
     @get:Rule
     var activityTestRule = MockApiActivityTestRule(HeroesActivity::class.java)
+
+    @get:Rule
+    var okHttpIdlingResourceRule = OkHttpIdlingResourceRule()
 
     @Before
     fun setUp() {

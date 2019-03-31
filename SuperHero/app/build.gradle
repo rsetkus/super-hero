@@ -110,6 +110,7 @@ dependencies {
     testImplementation appTestDependencies.androidLifeCycleTestCore
 
     androidTestImplementation appTestDependencies.androidTestRunner
+    androidTestImplementation appTestDependencies.okHttpIdleResource
     androidTestImplementation appTestDependencies.androidTestRules
     androidTestImplementation appTestDependencies.espressoCore
     androidTestImplementation appTestDependencies.mockWebServer

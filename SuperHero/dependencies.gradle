@@ -22,6 +22,7 @@ ext {
     mockkVersion = "1.9.1"
     assertJVersion = "2.9.1"
     mockWebServerVersion = "3.11.0"
+    okHttpIdleResourceVersion = "1.0.0"
 
     appDependencies = [
             kotlinStdLib                        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
@@ -51,6 +52,7 @@ ext {
             junit                       : "junit:junit:$junitVersion",
             mockk                       : "io.mockk:mockk:$mockkVersion",
             mockWebServer               : "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion",
+            okHttpIdleResource          : "com.jakewharton.espresso:okhttp3-idling-resource:$okHttpIdleResourceVersion",
             assertJ                     : "org.assertj:assertj-core:$assertJVersion",
             kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinCoroutines            : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion",
