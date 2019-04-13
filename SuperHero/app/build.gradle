@@ -96,6 +96,10 @@ dependencies {
     implementation appDependencies.navigationFragment
     implementation appDependencies.navigationUi
 
+    releaseImplementation appDependencies.leakCanaryRelease
+    debugImplementation appDependencies.leakCanaryDebug
+    debugImplementation appDependencies.leakCanaryDebugFragments
+
     implementation (appDependencies.glide) {
         exclude group: "com.android.support"
     }
