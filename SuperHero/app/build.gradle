@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 repositories {
     mavenCentral()
@@ -8,12 +9,6 @@ repositories {
 
 configurations {
     ktlint
-}
-
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
 }
 
 androidExtensions {
@@ -98,6 +93,9 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
 
+    implementation appDependencies.navigationFragment
+    implementation appDependencies.navigationUi
+
     releaseImplementation appDependencies.leakCanaryRelease
     debugImplementation appDependencies.leakCanaryDebug
     debugImplementation appDependencies.leakCanaryDebugFragments
@@ -110,11 +108,13 @@ dependencies {
     testImplementation appTestDependencies.mockk
     testImplementation appTestDependencies.assertJ
     testImplementation appTestDependencies.kotlinStdLib
+    testImplementation appTestDependencies.kotlinCoroutines
     testImplementation appTestDependencies.kotlinJunitTest
 
     testImplementation appTestDependencies.androidLifeCycleTestCore
 
     androidTestImplementation appTestDependencies.androidTestRunner
+    androidTestImplementation appTestDependencies.okHttpIdleResource
     androidTestImplementation appTestDependencies.androidTestRules
     androidTestImplementation appTestDependencies.espressoCore
     androidTestImplementation appTestDependencies.mockWebServer

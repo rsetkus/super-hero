@@ -1,4 +1,4 @@
-package lt.setkus.superhero.app.heroes
+package lt.setkus.superhero.app.details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,27 +11,25 @@ import lt.setkus.superhero.app.common.ViewState
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHeroesRepository
 
-class SuperHeroesViewModel(
+class HeroDetailsViewModel(
     val uiContext: CoroutineDispatcher,
     val backgroundContext: CoroutineDispatcher,
     val repository: SuperHeroesRepository
 ) : ViewModel() {
 
-    val superHeroesLiveData = MutableLiveData<ViewState>()
+    internal val liveData = MutableLiveData<ViewState>()
     internal lateinit var job: Job
 
-    fun loadSuperHeroes() {
+    fun loadSuperhero(heroId: Int) {
         job = GlobalScope.launch(uiContext) {
-            superHeroesLiveData.value = ViewState.Loading()
-            val superHeroes = withContext(backgroundContext) { repository.loadSuperHeroes() }
-            when (superHeroes) {
-                is Result.Success -> {
-                    val viewData = superHeroes.data.map { SuperHeroViewData(it.name, it.id, it.imageUrl) }
-                    superHeroesLiveData.value = ViewState.Success(viewData)
-                }
-                is Result.Error -> superHeroesLiveData.value = ViewState.Error(superHeroes.exception)
+            liveData.value = ViewState.Loading()
+            val result = withContext(backgroundContext) { repository.loadSuperHero(heroId) }
+            when (result) {
+                is Result.Success -> liveData.value = ViewState.Success(HeroDetailsViewData(result.data.name, result.data.description))
+                is Result.Error -> liveData.value = ViewState.Error(result.exception)
             }
-            superHeroesLiveData.value = ViewState.Finished()
+
+            liveData.value = ViewState.Finished()
         }
     }
 

@@ -4,7 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import lt.setkus.superhero.app.common.ViewState
 import lt.setkus.superhero.domain.Result
 import lt.setkus.superhero.domain.heroes.SuperHero
@@ -24,7 +25,10 @@ class SuperHeroesViewModelTest {
     private val superHeroesRepository = mockk<SuperHeroesRepository>(relaxed = true)
     private lateinit var superHeroesViewModel: SuperHeroesViewModel
 
-    private val listOfSuperHeroes = listOf(SuperHero("Iron Man", "imageUrl"), SuperHero("Hulk", "imageUrl"))
+    private val listOfSuperHeroes = listOf(
+        SuperHero(1, "Iron Man", "Made of iron", "imageUrl"),
+        SuperHero(2, "Hulk", "Green man", "imageUrl")
+    )
     private val successfulSuperHeroesResult = Result.Success(listOfSuperHeroes)
 
     @Before
@@ -50,13 +54,13 @@ class SuperHeroesViewModelTest {
         with(superHeroesViewModel) {
             val testLiveData = superHeroesLiveData.testObserver()
             loadSuperHeroes()
-            val receivedState = testLiveData.observedValues.get(0)
+            val receivedState = testLiveData.observedValues.first()
             assertTrue(receivedState is ViewState.Loading)
         }
     }
 
     @Test
-    fun `after successfuly load should indicate finished state`() {
+    fun `after successfully load should indicate finished state`() {
         coEvery { superHeroesRepository.loadSuperHeroes() } returns successfulSuperHeroesResult
         with(superHeroesViewModel) {
             val testLiveData = superHeroesLiveData.testObserver()
@@ -64,5 +68,19 @@ class SuperHeroesViewModelTest {
             val receivedState = testLiveData.observedValues.get(2)
             assertTrue(receivedState is ViewState.Finished)
         }
+    }
+
+    @Test
+    fun `when view model is cleared then should cancel coroutine`() {
+        coEvery {
+            superHeroesRepository.loadSuperHeroes()
+        } coAnswers {
+            delay(1000)
+            successfulSuperHeroesResult
+        }
+
+        superHeroesViewModel.loadSuperHeroes()
+        superHeroesViewModel.onCleared()
+        assertThat(superHeroesViewModel.job.isActive).isFalse()
     }
 }

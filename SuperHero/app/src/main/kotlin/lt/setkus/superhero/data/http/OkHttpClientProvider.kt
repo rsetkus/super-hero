@@ -7,26 +7,39 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
-fun provideOkHttpClient(): OkHttpClient {
-    val httpLoggingInterceptor = HttpLoggingInterceptor()
-    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+object OkHttpClientProvider {
 
-    val publicKey = getPublicKey()
-    val privateKey = getPrivateKey()
+    @Volatile private var INSTANCE: OkHttpClient? = null
 
-    return OkHttpClient.Builder()
-        .addInterceptor { chain: Interceptor.Chain ->
-            val timeStamp = System.currentTimeMillis().toString()
-            val hash = timeStamp.plus(privateKey).plus(publicKey).md5()
-            val httpUrl = chain.request().url()
-                .newBuilder()
-                .addQueryParameter("ts", timeStamp)
-                .addQueryParameter("apikey", publicKey)
-                .addQueryParameter("hash", hash)
-                .build()
-            val request = chain.request().newBuilder().url(httpUrl).build()
-            chain.proceed(request)
+    fun getClient(): OkHttpClient {
+        return INSTANCE ?: synchronized(this) {
+            buildClient().also {
+                INSTANCE = it
+            }
         }
-        .addInterceptor(httpLoggingInterceptor)
-        .build()
+    }
+
+    private fun buildClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+
+        val publicKey = getPublicKey()
+        val privateKey = getPrivateKey()
+
+        return OkHttpClient.Builder()
+            .addInterceptor { chain: Interceptor.Chain ->
+                val timeStamp = System.currentTimeMillis().toString()
+                val hash = timeStamp.plus(privateKey).plus(publicKey).md5()
+                val httpUrl = chain.request().url()
+                    .newBuilder()
+                    .addQueryParameter("ts", timeStamp)
+                    .addQueryParameter("apikey", publicKey)
+                    .addQueryParameter("hash", hash)
+                    .build()
+                val request = chain.request().newBuilder().url(httpUrl).build()
+                chain.proceed(request)
+            }
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
+    }
 }

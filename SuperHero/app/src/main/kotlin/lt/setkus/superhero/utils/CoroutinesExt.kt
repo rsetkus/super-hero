@@ -1,6 +1,6 @@
 package lt.setkus.superhero.utils
 
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 import lt.setkus.superhero.domain.Result
 
 suspend fun <T : Any> Deferred<T>.awaitResult(): Result<T> = try {
