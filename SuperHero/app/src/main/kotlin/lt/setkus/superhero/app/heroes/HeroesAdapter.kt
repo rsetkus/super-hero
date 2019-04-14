@@ -12,6 +12,8 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_hero.*
 import lt.setkus.superhero.R
 
+private const val MAXIMUM_NAME_CHARS = 23
+
 class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
 
     private val superHeroes = arrayListOf<SuperHeroViewData>()
@@ -30,6 +32,8 @@ class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
         superHeroes.addAll(items)
         notifyDataSetChanged()
     }
+
+    fun isSpannable(position: Int) = MAXIMUM_NAME_CHARS <= superHeroes[position].name.length
 
     inner class HeroViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 

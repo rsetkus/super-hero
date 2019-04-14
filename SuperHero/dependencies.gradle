@@ -13,6 +13,7 @@ ext {
     androidXLifecycleVersion = '2.0.0'
     recyclerViewVersion = "1.0.0"
     cardViewVersion = "1.0.0"
+    paletteVersion = "1.0.0"
     glideVersion = "4.9.0-SNAPSHOT"
     navigationVersion = "1.0.0-rc02"
     leakCanaryVersion = "1.6.2"
@@ -35,6 +36,7 @@ ext {
             constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             recyclerView                        : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
             cardView                            : "androidx.cardview:cardview:$cardViewVersion",
+            palette                             : "androidx.palette:palette:$paletteVersion",
             glide                               : "com.github.bumptech.glide:glide:$glideVersion",
             koin                                : "org.koin:koin-android:$koinVersion",
             koinViewModel                       : "org.koin:koin-androidx-viewmodel:$koinVersion",
