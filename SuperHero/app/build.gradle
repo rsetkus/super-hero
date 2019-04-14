@@ -93,6 +93,7 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
     implementation appDependencies.cardView
+    implementation appDependencies.palette
 
     implementation appDependencies.navigationFragment
     implementation appDependencies.navigationUi
