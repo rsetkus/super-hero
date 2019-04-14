@@ -29,9 +29,13 @@ class HeroesFragment : Fragment() {
 
         bindResources()
 
+        heroesGrid.adapter = adapter
         val layoutManager = GridLayoutManager(context, numColumns)
-        custom_fonts_grid.layoutManager = layoutManager
-        custom_fonts_grid.adapter = adapter
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int) = if (adapter.isSpannable(position)) layoutManager.spanCount else 1
+        }
+
+        heroesGrid.layoutManager = layoutManager
     }
 
     private fun bindResources() {
