@@ -20,20 +20,21 @@ class HeroDetailsViewModel(
     val comicsRepository: ComicsRepository
 ) : ViewModel() {
 
-    internal val liveData = MutableLiveData<ViewState>()
+    internal val heroLiveData = MutableLiveData<ViewState>()
+    internal val comicsLiveData = MutableLiveData<ViewState>()
     internal lateinit var superHereJob: Job
     internal lateinit var comicsJob: Job
 
     fun loadSuperhero(heroId: Int) {
         superHereJob = GlobalScope.launch(uiContext) {
-            liveData.value = ViewState.Loading()
+            heroLiveData.value = ViewState.Loading()
             val result = withContext(backgroundContext) { superHeroesRepository.loadSuperHero(heroId) }
             when (result) {
-                is Result.Success -> liveData.value = ViewState.Success(HeroDetailsViewData(result.data.name, result.data.description))
-                is Result.Error -> liveData.value = ViewState.Error(result.exception)
+                is Result.Success -> heroLiveData.value = ViewState.Success(HeroDetailsViewData(result.data.name, result.data.description))
+                is Result.Error -> heroLiveData.value = ViewState.Error(result.exception)
             }
 
-            liveData.value = ViewState.Finished()
+            heroLiveData.value = ViewState.Finished()
         }
     }
 
@@ -44,14 +45,14 @@ class HeroDetailsViewModel(
 
     fun loadSuperHeroComics(heroId: Int) {
         comicsJob = GlobalScope.launch(uiContext) {
-            liveData.value = ViewState.Loading()
+            comicsLiveData.value = ViewState.Loading()
             val result = withContext(backgroundContext) { comicsRepository.loadComicsByHero(heroId) }
             when (result) {
-                is Result.Success -> liveData.value = ViewState.Success(mapResultToHeroComics(result.data))
-                is Result.Error -> liveData.value = ViewState.Error(result.exception)
+                is Result.Success -> comicsLiveData.value = ViewState.Success(mapResultToHeroComics(result.data))
+                is Result.Error -> comicsLiveData.value = ViewState.Error(result.exception)
             }
 
-            liveData.value = ViewState.Finished()
+            comicsLiveData.value = ViewState.Finished()
         }
     }
 

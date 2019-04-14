@@ -58,7 +58,7 @@ class HeroDetailsViewModelTest {
     fun `when result received then should emit result to view`() {
         mockRepositoryLoadSuperHero()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = heroLiveData.testObserver()
             loadSuperhero(SUPER_HERO_ID)
             coVerify { superHeroesRepository.loadSuperHero(SUPER_HERO_ID) }
 
@@ -75,7 +75,7 @@ class HeroDetailsViewModelTest {
     fun `when comic result received then should emit data to view`() {
         mockSuccessfulComicsLoad()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = comicsLiveData.testObserver()
             loadSuperHeroComics(SUPER_HERO_ID)
             coVerify { comicsRepository.loadComicsByHero(SUPER_HERO_ID) }
 
@@ -92,7 +92,7 @@ class HeroDetailsViewModelTest {
     fun `before loading hero comics should indicate loading state`() {
         mockSuccessfulComicsLoad()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = comicsLiveData.testObserver()
             loadSuperHeroComics(SUPER_HERO_ID)
             val firstViewState = testLiveData.observedValues.first()
             assertThat(firstViewState).isInstanceOf(ViewState.Loading::class.java)
@@ -103,7 +103,7 @@ class HeroDetailsViewModelTest {
     fun `before loading comics should indicate loading state`() {
         mockSuccessfulComicsLoad()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = comicsLiveData.testObserver()
             loadSuperHeroComics(SUPER_HERO_ID)
             val firstViewState = testLiveData.observedValues.first()
             assertThat(firstViewState).isInstanceOf(ViewState.Loading::class.java)
@@ -114,7 +114,7 @@ class HeroDetailsViewModelTest {
     fun `after loading data should indicate finished state`() {
         mockRepositoryLoadSuperHero()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = heroLiveData.testObserver()
             loadSuperhero(SUPER_HERO_ID)
             val lastReceivedViewState = testLiveData.observedValues.last()
             assertThat(lastReceivedViewState).isInstanceOf(ViewState.Finished::class.java)
@@ -125,7 +125,7 @@ class HeroDetailsViewModelTest {
     fun `after loading comics should emit finished view state`() {
         mockSuccessfulComicsLoad()
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = comicsLiveData.testObserver()
             loadSuperHeroComics(SUPER_HERO_ID)
             val lastReceivedViewState = testLiveData.observedValues.last()
             assertThat(lastReceivedViewState).isInstanceOf(ViewState.Finished::class.java)
@@ -136,7 +136,7 @@ class HeroDetailsViewModelTest {
     fun `when error on loading hero then should push error view state`() {
         coEvery { superHeroesRepository.loadSuperHero(SUPER_HERO_ID) } returns errorResult
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = heroLiveData.testObserver()
             loadSuperhero(SUPER_HERO_ID)
             val lastReceivedViewState = testLiveData.observedValues.get(1)
             assertThat(lastReceivedViewState).isInstanceOf(ViewState.Error::class.java)
@@ -147,7 +147,7 @@ class HeroDetailsViewModelTest {
     fun `when error on loading comics then should emit error view state`() {
         coEvery { comicsRepository.loadComicsByHero(SUPER_HERO_ID) } returns errorResult
         with(detailViewModel) {
-            val testLiveData = liveData.testObserver()
+            val testLiveData = comicsLiveData.testObserver()
             loadSuperHeroComics(SUPER_HERO_ID)
             val expectedErrorState = testLiveData.observedValues.get(1)
             assertThat(expectedErrorState).isInstanceOf(ViewState.Error::class.java)

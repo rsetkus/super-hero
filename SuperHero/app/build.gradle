@@ -92,6 +92,7 @@ dependencies {
     implementation appDependencies.appCompat
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
+    implementation appDependencies.cardView
 
     implementation appDependencies.navigationFragment
     implementation appDependencies.navigationUi

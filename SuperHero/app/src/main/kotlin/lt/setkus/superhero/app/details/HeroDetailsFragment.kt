@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -21,6 +22,7 @@ import org.koin.android.ext.android.inject
 class HeroDetailsFragment : Fragment() {
 
     private val detailsViewModel: HeroDetailsViewModel by inject()
+    private val comicsAdapter = ComicsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,24 +37,45 @@ class HeroDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        comicsList.adapter = comicsAdapter
+
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        comicsList.layoutManager = layoutManager
+
         arguments?.let {
             val detailsFragmentArgs = HeroDetailsFragmentArgs.fromBundle(it)
             headerImage.transitionName = detailsFragmentArgs.heroName
             loadImage(detailsFragmentArgs.heroUrl)
 
-            observeViewModel()
-            detailsViewModel.loadSuperhero(detailsFragmentArgs.heroId)
+            loadDetails(detailsFragmentArgs.heroId)
+            loadComics(detailsFragmentArgs.heroId)
         }
     }
 
-    private fun observeViewModel() {
+    private fun loadComics(heroId: Int) {
+        val observer = Observer<ViewState> { state ->
+            when (state) {
+                is ViewState.Success<*> -> bindComics(state.data as List<HeroComicsViewData>)
+            }
+        }
+
+        detailsViewModel.comicsLiveData.observe(this, observer)
+        detailsViewModel.loadSuperHeroComics(heroId)
+    }
+
+    private fun bindComics(comics: List<HeroComicsViewData>) {
+        comicsAdapter.addComics(comics)
+    }
+
+    private fun loadDetails(heroId: Int) {
         val observer = Observer<ViewState> {
             when (it) {
                 is ViewState.Success<*> -> bindData(it.data as HeroDetailsViewData)
             }
         }
 
-        detailsViewModel.liveData.observe(this, observer)
+        detailsViewModel.heroLiveData.observe(this, observer)
+        detailsViewModel.loadSuperhero(heroId)
     }
 
     private fun bindData(details: HeroDetailsViewData) {

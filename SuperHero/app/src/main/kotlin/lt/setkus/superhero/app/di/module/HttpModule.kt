@@ -10,6 +10,7 @@ val httpModule = module {
     single { OkHttpClientProvider.getClient() }
     single { provideRetrofit(get()) }
     single { MarvelService.createCharacterService(get()) }
+    single { MarvelService.createComicsService(get()) }
     single(name = "uiContext") { AppExecutors().uiContext }
     single(name = "networkContext") { AppExecutors().networkContext }
 }
