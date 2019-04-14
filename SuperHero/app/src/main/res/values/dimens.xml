@@ -9,7 +9,8 @@
 
     <dimen name="normal_padding">16dp</dimen>
 
-    <dimen name="tile_normal_text_size">24sp</dimen>
+    <dimen name="tile_small_text_size">10sp</dimen>
+    <dimen name="tile_large_text_size">24sp</dimen>
 
     <dimen name="hero_name_text_size">32sp</dimen>
 

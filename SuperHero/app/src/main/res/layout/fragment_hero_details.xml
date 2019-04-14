@@ -20,14 +20,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@color/colorPrimary"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/heroName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:gravity="start"
             android:padding="@dimen/normal_padding"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerImage"
             android:textAppearance="@style/TextAppearance.HeroName"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerImage"
             tools:text="Bombermenas"/>
 
         <TextView
