@@ -18,4 +18,20 @@
         <item name="android:shadowRadius">3</item>
     </style>
 
+    <style name="TextAppearance.HeroName" parent="@android:style/TextAppearance.Material.Subhead">
+        <item name="android:textSize">@dimen/hero_name_text_size</item>
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.HeroDescription" parent="@android:style/TextAppearance.Material.Subhead">
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.ComicTitle" parent="@android:style/TextAppearance.Material.Caption">
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
