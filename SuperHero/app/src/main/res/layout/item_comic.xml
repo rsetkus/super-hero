@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="210dp"
     android:layout_height="280dp"
-    app:cardBackgroundColor="?android:colorBackground">
+    app:cardBackgroundColor="@color/transparent_white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

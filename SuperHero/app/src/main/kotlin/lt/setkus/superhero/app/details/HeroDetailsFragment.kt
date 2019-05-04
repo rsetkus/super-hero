@@ -1,23 +1,20 @@
 package lt.setkus.superhero.app.details
 
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import kotlinx.android.synthetic.main.fragment_hero_details.*
+import kotlinx.android.synthetic.main.fragment_hero_details2.*
 import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
 import org.koin.android.ext.android.inject
@@ -34,7 +31,7 @@ class HeroDetailsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_hero_details, container, false)
+        return inflater.inflate(R.layout.fragment_hero_details2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,7 +80,10 @@ class HeroDetailsFragment : Fragment() {
 
     private fun bindData(details: HeroDetailsViewData) {
         heroName.text = details.name
-        heroDescription.text = details.description
+        if (details.description.isNotEmpty()) {
+            heroDescription.text = details.description
+            heroDescription.visibility = View.VISIBLE
+        }
     }
 
     private fun loadImage(url: String) {
@@ -98,29 +98,10 @@ class HeroDetailsFragment : Fragment() {
                 }
 
                 override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-                    resource?.let {
-                        val bitmapDrawable = resource as BitmapDrawable
-                        Palette.from(bitmapDrawable.bitmap).generate(object : Palette.PaletteAsyncListener {
-                            override fun onGenerated(palette: Palette?) {
-                                applyPalette(palette)
-                            }
-                        })
-                    }
-
                     startPostponedEnterTransition()
                     return false
                 }
             })
             .into(headerImage)
-    }
-
-    private fun applyPalette(palette: Palette?) {
-        palette?.let {
-            val primaryDark = ResourcesCompat.getColor(resources, R.color.colorPrimaryDark, null)
-            val primary = ResourcesCompat.getColor(resources, R.color.colorPrimary, null)
-
-            collapsingToolbar.setContentScrimColor(palette.getMutedColor(primary))
-            collapsingToolbar.setStatusBarScrimColor(palette.getDarkMutedColor(primaryDark))
-        }
     }
 }
