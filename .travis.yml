@@ -1,5 +1,7 @@
 branches:
-  only: master
+  only:
+    - master
+    - development
 
 language: android
 
