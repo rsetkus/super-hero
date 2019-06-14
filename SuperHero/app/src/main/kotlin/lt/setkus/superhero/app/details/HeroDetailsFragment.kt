@@ -55,7 +55,11 @@ class HeroDetailsFragment : Fragment() {
     private fun loadComics(heroId: Int) {
         val observer = Observer<ViewState> { state ->
             when (state) {
-                is ViewState.Success<*> -> bindComics(state.data as List<HeroComicsViewData>)
+                is ViewState.Success<*> -> {
+                    bindComics(state.data as List<HeroComicsViewData>)
+                    heroDetailsStateLayout.content()
+                }
+                is ViewState.Loading -> heroDetailsStateLayout.loading()
             }
         }
 
