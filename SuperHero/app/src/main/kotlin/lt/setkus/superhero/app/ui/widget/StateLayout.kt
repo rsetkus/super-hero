@@ -64,6 +64,7 @@ class StateLayout @JvmOverloads constructor(
         when (layoutState) {
             LOADING -> loading()
             CONTENT -> content()
+            ERROR -> error()
             NONE -> content()
             else -> hideAll()
         }
