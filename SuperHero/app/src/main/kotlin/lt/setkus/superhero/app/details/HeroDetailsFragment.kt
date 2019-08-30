@@ -14,7 +14,11 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import kotlinx.android.synthetic.main.fragment_hero_details2.*
+import kotlinx.android.synthetic.main.fragment_hero_details2.comicsList
+import kotlinx.android.synthetic.main.fragment_hero_details2.headerImage
+import kotlinx.android.synthetic.main.fragment_hero_details2.heroDescription
+import kotlinx.android.synthetic.main.fragment_hero_details2.heroDetailsStateLayout
+import kotlinx.android.synthetic.main.fragment_hero_details2.heroName
 import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
 import org.koin.android.ext.android.inject
@@ -55,11 +59,10 @@ class HeroDetailsFragment : Fragment() {
     private fun loadComics(heroId: Int) {
         val observer = Observer<ViewState> { state ->
             when (state) {
-                is ViewState.Success<*> -> {
-                    bindComics(state.data as List<HeroComicsViewData>)
-                    heroDetailsStateLayout.content()
-                }
+                is ViewState.Success<*> -> bindComics(state.data as List<HeroComicsViewData>)
                 is ViewState.Loading -> heroDetailsStateLayout.loading()
+                is ViewState.Finished -> heroDetailsStateLayout.content()
+                is ViewState.Error -> heroDetailsStateLayout.error()
             }
         }
 

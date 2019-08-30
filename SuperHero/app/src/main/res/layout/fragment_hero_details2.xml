@@ -14,13 +14,15 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <lt.setkus.superhero.app.ui.widget.StateLayout
             android:id="@+id/heroDetailsStateLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:loadingLayout="@layout/state_loading">
+            app:loadingLayout="@layout/state_loading"
+            app:errorLayout="@layout/state_error">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="match_parent"

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
+<lt.setkus.superhero.app.ui.widget.StateLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/heroesGrid"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/heroesStateLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:elevation="1dp"
-    android:scrollbarStyle="outsideOverlay"
-    android:scrollbars="vertical"
-    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    tools:listitem="@layout/item_hero"/>
+    app:loadingLayout="@layout/state_loading"
+    app:errorLayout="@layout/state_error">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/heroesGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:elevation="1dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_hero"/>
+
+</lt.setkus.superhero.app.ui.widget.StateLayout>
