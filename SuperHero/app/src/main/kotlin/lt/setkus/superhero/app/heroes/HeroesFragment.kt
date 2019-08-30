@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.fragment_heroes.*
+import kotlinx.android.synthetic.main.fragment_heroes.heroesGrid
+import kotlinx.android.synthetic.main.fragment_heroes.heroesStateLayout
 import lt.setkus.superhero.R
 import lt.setkus.superhero.app.common.ViewState
 import org.koin.android.ext.android.inject
@@ -47,9 +48,10 @@ class HeroesFragment : Fragment() {
 
         val observer = Observer<ViewState> { viewState ->
             when (viewState) {
-                is ViewState.Success<*> -> {
-                    adapter.addSuperHeroes(viewState.data as List<SuperHeroViewData>)
-                }
+                is ViewState.Success<*> -> adapter.addSuperHeroes(viewState.data as List<SuperHeroViewData>)
+                is ViewState.Loading -> heroesStateLayout.loading()
+                is ViewState.Finished -> heroesStateLayout.content()
+                is ViewState.Error -> heroesStateLayout.error()
             }
         }
 

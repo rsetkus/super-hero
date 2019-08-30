@@ -3,4 +3,8 @@
     <declare-styleable name="ForegroundLinearLayout">
         <attr name="android:foreground" />
     </declare-styleable>
+    <declare-styleable name="StateLayout">
+        <attr name="loadingLayout" format="reference"/>
+        <attr name="errorLayout" format="reference"/>
+    </declare-styleable>
 </resources>
