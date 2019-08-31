@@ -13,6 +13,7 @@ ext {
     androidXLifecycleVersion = '2.0.0'
     recyclerViewVersion = "1.0.0"
     cardViewVersion = "1.0.0"
+    pagingVersion = "2.1.0"
     paletteVersion = "1.0.0"
     glideVersion = "4.9.0-SNAPSHOT"
     navigationVersion = "1.0.0-rc02"
@@ -53,7 +54,8 @@ ext {
             androidLifecycleKotlinExtensions    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion",
             androidLifecycleExtensions          : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
             navigationFragment                  : "android.arch.navigation:navigation-fragment:$navigationVersion",
-            navigationUi                        : "android.arch.navigation:navigation-ui:$navigationVersion"
+            navigationUi                        : "android.arch.navigation:navigation-ui:$navigationVersion",
+            paging                              : "androidx.paging:paging-runtime:$pagingVersion"
     ]
 
     appTestDependencies = [
