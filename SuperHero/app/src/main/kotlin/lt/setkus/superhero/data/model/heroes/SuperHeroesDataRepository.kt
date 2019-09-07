@@ -28,8 +28,8 @@ class SuperHeroesDataRepository(
         }
     }
 
-    override suspend fun loadSuperHeroes(): Result<List<SuperHero>> {
-        val result = service.getCharacters().awaitResult()
+    override suspend fun loadSuperHeroes(offset: Long): Result<List<SuperHero>> {
+        val result = service.getCharacters(offset).awaitResult()
         return when (result) {
             is Result.Error -> result
             is Result.Success -> mapCharactersToSuperHeroes(result.data)

@@ -31,7 +31,7 @@ class SuperHeroesDataRepositoryTest {
     fun `when service successfully returns result then should map SuperHeroes`() {
         dataRepository = SuperHeroesDataRepository(successfulService)
         runBlocking {
-            val result = dataRepository.loadSuperHeroes() as Result.Success
+            val result = dataRepository.loadSuperHeroes(0) as Result.Success
             assertThat(result.data).contains(SuperHero(SUPER_HERO_ID, SUPER_HERO_NAME, SUPER_HERO_DESCRIPTION, "path.jpg")).hasSize(listOfCharacters
                 .size)
         }
@@ -41,7 +41,7 @@ class SuperHeroesDataRepositoryTest {
     fun `when error occurs on loading super heroes then should return error result`() {
         dataRepository = SuperHeroesDataRepository(erroneousService)
         runBlocking {
-            val result = dataRepository.loadSuperHeroes()
+            val result = dataRepository.loadSuperHeroes(0)
             assertTrue(result is Result.Error)
         }
     }
@@ -87,7 +87,7 @@ private class FakeCharacterService(val superHeroes: List<Character>) : Character
         this.exception = exception
     }
 
-    override fun getCharacters(): Deferred<CharacterDataWrapper> {
+    override fun getCharacters(offset: Long): Deferred<CharacterDataWrapper> {
         return makeAsycnResponse()
     }
 }

@@ -55,7 +55,7 @@ ext {
             androidLifecycleExtensions          : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
             navigationFragment                  : "android.arch.navigation:navigation-fragment:$navigationVersion",
             navigationUi                        : "android.arch.navigation:navigation-ui:$navigationVersion",
-            paging                              : "androidx.paging:paging-runtime:$pagingVersion"
+            paging                              : "androidx.paging:paging-runtime-ktx:$pagingVersion"
     ]
 
     appTestDependencies = [

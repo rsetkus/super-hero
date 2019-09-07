@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_heroes.heroesGrid
 import kotlinx.android.synthetic.main.fragment_heroes.heroesStateLayout
 import lt.setkus.superhero.R
-import lt.setkus.superhero.app.common.ViewState
+import lt.setkus.superhero.data.http.NetworkState
 import org.koin.android.ext.android.inject
 
 private const val DEFAULT_NUMBER_OF_COLUMNS = 2
@@ -46,17 +47,18 @@ class HeroesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val observer = Observer<ViewState> { viewState ->
-            when (viewState) {
-                is ViewState.Success<*> -> adapter.addSuperHeroes(viewState.data as List<SuperHeroViewData>)
-                is ViewState.Loading -> heroesStateLayout.loading()
-                is ViewState.Finished -> heroesStateLayout.content()
-                is ViewState.Error -> heroesStateLayout.error()
+        val networkStateObserver = Observer<NetworkState> { networkState ->
+            when (networkState) {
+                is NetworkState.LOADED -> heroesStateLayout.content()
+                is NetworkState.ERROR -> heroesStateLayout.error()
+                is NetworkState.LOADING -> heroesStateLayout.loading()
             }
         }
 
-        viewModel.superHeroesLiveData.observe(this, observer)
+        viewModel.netWorkState.observe(this, networkStateObserver)
 
-        viewModel.loadSuperHeroes()
+        viewModel.heroesLiveData.observe(this, Observer<PagedList<SuperHeroViewData>> {
+            adapter.submitList(it)
+        })
     }
 }
